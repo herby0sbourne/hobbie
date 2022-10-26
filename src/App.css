@@ -1,0 +1,100 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    /*padding: 2rem;*/
+    /*text-align: center;*/
+    flex: 1;
+}
+
+img {
+    width: 100%;
+}
+
+.btn {
+    background-color: #0ca789;
+    color: white;
+    width: 100%;
+}
+
+.home {
+    margin-top: 9rem;
+    padding: 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.91);
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+.action {
+    display: flex;
+    /*align-items: baseline;*/
+
+}
+
+.details {
+    margin-left: 10px;
+    color: black;
+    text-decoration: none;
+    transform: translateY(7px);
+}
+
+.buttons {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.btn-ghost:first-child {
+    border: 1px solid #0ca789;
+    color: #0ca789;
+    margin-right: 10px;
+}
+
+.btn-ghost:last-child {
+    border: 1px solid #f25230;
+    color: #f25230;
+    margin-left: 10px;
+}
+
+.btn-ghost {
+    background-color: transparent;
+}
+
+.select {
+    padding: 0 1rem;
+}
+
+.options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.option {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    /*width: 225px;*/
+    flex: 1;
+}
+
+.option h2 {
+    font-size: 18px;
+    margin: 0;
+    padding: 1rem;
+    color: white;
+    background-color: #0ca789;
+    text-align: center;
+}
+
+.option img, .option h2 {
+    pointer-events: none;
+}
