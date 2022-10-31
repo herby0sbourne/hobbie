@@ -11,6 +11,7 @@ const Hobby = () => {
     const [newList, setNewList] = useState([]);
     const { setResult, setIndex } = useContext(StoreContext);
     const [round, setRound] = useState(1);
+    const data = round === 1 ? hobbies : newList;
 
     useEffect(() => {
         setHobbies(HOBBIES);
@@ -18,15 +19,8 @@ const Hobby = () => {
 
     useEffect(() => {
         setIndex({ startIdx: 0, stopIdx: 2 });
-    }, [hobbies]);
-
-    useEffect(() => {
-        setIndex({ startIdx: 0, stopIdx: 2 });
-    }, [round]);
-
-    // const data = hobbies.slice(start, end).map((hobby) => {
-    //     return hobby;
-    // });
+        console.log("reset");
+    }, [round, hobbies]);
 
     const roundOne = (id) => {
         const hobby = hobbies.find((hobby) => {
@@ -38,10 +32,8 @@ const Hobby = () => {
         });
 
         if (hobbies.length === end) {
-            //     console.log(hobbies.length, { end });
-            //     console.log("i ran ");
-            setHobbies(newList);
-            //     setRound(2);
+            // setHobbies(newList);
+            setRound(2);
         }
     };
 
@@ -66,6 +58,13 @@ const Hobby = () => {
         if (round === 2) {
             console.log("round 2");
             // roundTwo(id);
+            const result = hobbies.find((hobby) => {
+                return hobby.id === id;
+            });
+
+            setResult((prevState) => {
+                return [...prevState, result];
+            });
         }
 
         // const result = hobbies.find((hobby) => {
@@ -90,29 +89,35 @@ const Hobby = () => {
 
         options.forEach((element) => {
             const id = element.dataset.id;
-            const result = hobbies.find((hobby) => {
+            const hobby = hobbies.find((hobby) => {
                 return hobby.id === id;
             });
 
-            setResult((prevState) => {
-                return [...prevState, result];
+            setNewList((prevState) => {
+                return [...prevState, hobby];
             });
+            // setResult((prevState) => {
+            //     return [...prevState, hobby];
+            // });
         });
 
         next();
     };
+
     console.log({ hobbies });
     console.log({ newList });
+    console.log({ data });
     return (
         <div className="App">
             <div className="buttons">
                 <CustomButton title="BOTH" select={selectBoth} />
+                <h1 style={{ position: "absolute", top: "0" }}>{round}</h1>
                 <CustomButton title="NONE" select={selectNone} />
             </div>
 
             <div className="select">
                 <div className="options">
-                    {hobbies.slice(start, end).map((hobby) => {
+                    {data.slice(start, end).map((hobby) => {
                         return (
                             <Option key={hobby.id} hobby={hobby} handelOnClick={handelOnClick} />
                         );
